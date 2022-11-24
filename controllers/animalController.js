@@ -9,4 +9,12 @@ router.get('/', async(req, res) => {
     res.render('animals/index.ejs', { animals })
 })
 
+// Show
+router.get('/:id', (req, res) => {
+    const id = req.params.id
+    Animal.findById(id, (err, animal) => {
+        res.render('animals/show.ejs', {animal})
+    })
+})
+
 module.exports = router

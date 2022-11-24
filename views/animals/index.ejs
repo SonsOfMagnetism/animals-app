@@ -6,10 +6,11 @@
     <main>
         <a href="/animals/new"><button>Create a New Animal</button></a>
         <% for (animal of animals) { %>
-            <a href="/animals/<%= animal._id %>"></a>
-            <h2>
-                <%= animal.species %>
-            </h2>
+            <a href="/animals/<%= animal._id %>">
+                <h2>
+                    <%= animal.species %> - <%= animal.extinct ? "Extinct" : "Not Extinct" %> 
+                </h2>
+            </a>
         <% } %>
     </main>
 </body>
