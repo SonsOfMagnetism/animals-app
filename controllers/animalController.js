@@ -14,6 +14,14 @@ router.get('/new', (req, res) => {
     res.render('animals/new.ejs')
 })
 
+// Create
+router.post('/', (req, res) => {
+    req.body.extinct = req.body.extinct === 'on' ? true : false
+    Animal.create(req.body, (err, animal) => {
+        res.redirect('/animals')
+    })
+})
+
 // Show
 router.get('/:id', (req, res) => {
     const id = req.params.id
