@@ -15,8 +15,21 @@ router.get('/new', (req, res) => {
 })
 
 // Delete
+router.delete('/:id', (req, res) => {
+    const id = req.params.id
+    Animal.findByIdAndRemove(id, (err, animal) => {
+        res.redirect('/animals')
+    })
+})
 
 // Update
+router.put('/:id', (req, res) => {
+    const id= req.params.id
+    req.body.extinct = req.body.extinct === 'on' ? true: false
+    Animal.findByIdAndUpdate(id, req.body, {new: true}, (err, animal) => {
+        res.redirect('/animals')
+    })
+})
 
 // Create
 router.post('/', (req, res) => {
